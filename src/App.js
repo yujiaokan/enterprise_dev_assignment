@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
-
+//import logo from './logo.svg';
+//import './App.css';
+import { StyledEngineProvider } from '@mui/material';
+import {BrowserRouter,Route,Routes} from 'react-router-dom';
+import CssBaseline from '@mui/material/CssBaseline';
+import Header from './compoent/Header';
+import AddCharger from './compoent/AddCharger';
+import UpdateDetail from './compoent/UpdateDetail';
+import DeleteCharger from "./compoent/DeleteCharger";
+import Home from './compoent/Home';
+import SearchHomeChargers from './compoent/SearchCharger';
+import SavedCharger from './compoent/SavedCharger';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <StyledEngineProvider injectFirst>
+    <BrowserRouter>
+    <CssBaseline/>
+    <Header/>
+    <Routes>
+      <Route path='/' element={<Home/>}/>
+      <Route path='/listings' element={<SearchHomeChargers/>}/>
+      <Route path='/addcharger' element={<AddCharger/>}/>
+      <Route path='/updatedetail/:id' element={<UpdateDetail/>}/>
+      <Route path='/deletecharger/:id' element={<DeleteCharger/>}/>
+      <Route path='savedcharger' element={<SavedCharger/>}/>
+    </Routes>
+    </BrowserRouter>
+
+  </StyledEngineProvider>
   );
 }
 
